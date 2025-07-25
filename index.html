@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Gems - Wholesale & Retail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#3b82f6', // A vibrant blue
+                        'brand-dark-blue': '#1e3a8a', // A deep, rich blue
+                        'brand-light': '#f9fafb', // Off-white for backgrounds
+                        'brand-gray': '#4b5563', // For text
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-brand-light font-sans text-brand-gray">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold text-brand-dark-blue">PreciousGems</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link active" onclick="showPage('home')">Home</a>
+                <a href="#catalogue" class="nav-link" onclick="showPage('catalogue')">Catalogue</a>
+                <a href="#about" class="nav-link" onclick="showPage('about')">About Us</a>
+                <a href="#contact" class="nav-link" onclick="showPage('contact')">Contact</a>
+            </div>
+            <a href="#contact" onclick="showPage('contact')" class="hidden md:inline-block bg-brand-blue hover:bg-brand-dark-blue text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+                Inquire Now
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-brand-dark-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#home" class="block py-2 text-center nav-link active" onclick="showPage('home')">Home</a>
+            <a href="#catalogue" class="block py-2 text-center nav-link" onclick="showPage('catalogue')">Catalogue</a>
+            <a href="#about" class="block py-2 text-center nav-link" onclick="showPage('about')">About</a>
+            <a href="#contact" class="block py-2 text-center nav-link" onclick="showPage('contact')">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Content -->
+        <div id="page-content">
+            <!-- All page sections are here, JS will handle visibility -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark-blue text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-serif text-xl font-bold mb-4">PreciousGems</h3>
+                    <p class="text-gray-300">Sourcing the world's finest gemstones for jewelers and collectors since 2005.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-brand-blue transition" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#catalogue" class="hover:text-brand-blue transition" onclick="showPage('catalogue')">Catalogue</a></li>
+                        <li><a href="#about" class="hover:text-brand-blue transition" onclick="showPage('about')">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact Us</h3>
+                    <p class="text-gray-300">123 Gemstone Ave, Jewel City</p>
+                    <p class="text-gray-300">contact@preciousgems.com</p>
+                    <p class="text-gray-300">(555) 123-4567</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+                <p>&copy; 2025 PreciousGems. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Page Templates ---
+        const pages = {
+            home: `
+                <!-- Hero Section -->
+                <section class="bg-cover bg-center h-[60vh] md:h-[80vh] text-white flex items-center" style="background-image: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.5)), url('https://placehold.co/1920x1080/1e3a8a/ffffff?text=Brilliant+Gems');">
+                    <div class="container mx-auto px-6 text-center">
+                        <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4">The World's Finest Gems</h1>
+                        <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Ethically sourced, precision cut, and curated for the discerning buyer.</p>
+                        <a href="#catalogue" onclick="showPage('catalogue')" class="bg-brand-blue hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform transform hover:scale-105">
+                            Explore Our Collection
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Featured Gems Section -->
+                <section class="py-16 sm:py-24">
+                    <div class="container mx-auto px-6">
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-center text-brand-dark-blue mb-12">Featured Selections</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <!-- Featured Gem 1 -->
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                                <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Sapphire" alt="Sapphire" class="w-full h-56 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-brand-dark-blue">Royal Blue Sapphire</h3>
+                                    <p class="text-brand-gray mt-2">3.15 Carat, Oval Cut</p>
+                                    <a href="#catalogue" onclick="showPage('catalogue', { detail: 'gem1' })" class="text-brand-blue hover:text-brand-dark-blue font-semibold mt-4 inline-block">View Details &rarr;</a>
+                                </div>
+                            </div>
+                            <!-- Featured Gem 2 -->
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                                <img src="https://placehold.co/600x400/ef4444/ffffff?text=Ruby" alt="Ruby" class="w-full h-56 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-brand-dark-blue">Pigeon Blood Ruby</h3>
+                                    <p class="text-brand-gray mt-2">2.50 Carat, Cushion Cut</p>
+                                    <a href="#catalogue" onclick="showPage('catalogue', { detail: 'gem2' })" class="text-brand-blue hover:text-brand-dark-blue font-semibold mt-4 inline-block">View Details &rarr;</a>
+                                </div>
+                            </div>
+                            <!-- Featured Gem 3 -->
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                                <img src="https://placehold.co/600x400/10b981/ffffff?text=Emerald" alt="Emerald" class="w-full h-56 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-brand-dark-blue">Colombian Emerald</h3>
+                                    <p class="text-brand-gray mt-2">4.02 Carat, Emerald Cut</p>
+                                    <a href="#catalogue" onclick="showPage('catalogue', { detail: 'gem3' })" class="text-brand-blue hover:text-brand-dark-blue font-semibold mt-4 inline-block">View Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+            catalogue: `
+                <div class="container mx-auto px-6 py-12">
+                    <h1 class="text-4xl font-serif font-bold text-brand-dark-blue mb-8 text-center">Our Collection</h1>
+                    <!-- Filters -->
+                    <div class="bg-white p-4 rounded-lg shadow-md mb-8 flex flex-wrap gap-4 items-center justify-center">
+                        <div class="flex-grow">
+                            <label for="gem-type" class="sr-only">Gem Type</label>
+                            <select id="gem-type" class="w-full p-2 border rounded-md">
+                                <option>All Gem Types</option>
+                                <option>Sapphire</option>
+                                <option>Ruby</option>
+                                <option>Emerald</option>
+                                <option>Diamond</option>
+                            </select>
+                        </div>
+                        <div class="flex-grow">
+                            <label for="shape" class="sr-only">Shape</label>
+                            <select id="shape" class="w-full p-2 border rounded-md">
+                                <option>All Shapes</option>
+                                <option>Round</option>
+                                <option>Oval</option>
+                                <option>Cushion</option>
+                                <option>Emerald Cut</option>
+                            </select>
+                        </div>
+                        <button class="bg-brand-blue text-white font-semibold py-2 px-6 rounded-lg w-full sm:w-auto">Filter</button>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                        ${[...Array(12)].map((_, i) => `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300" onclick="showPage('productDetail', { id: ${i+1} })">
+                            <img src="https://placehold.co/600x400/${['3b82f6','ef4444','10b981','f59e0b'][i%4]}/ffffff?text=Gem+${i+1}" alt="Gemstone ${i+1}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-brand-dark-blue">Gemstone Name ${i+1}</h3>
+                                <p class="text-sm text-brand-gray">1.23 Carats</p>
+                            </div>
+                        </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `,
+            productDetail: `
+                <div class="container mx-auto px-6 py-16">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                        <!-- Image Gallery -->
+                        <div>
+                            <img id="main-img" src="https://placehold.co/800x600/3b82f6/ffffff?text=Main+View" alt="Main gemstone view" class="w-full rounded-lg shadow-lg mb-4">
+                            <div class="grid grid-cols-4 gap-2">
+                                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Angle+1" class="cursor-pointer rounded-md border-2 border-brand-blue" onclick="document.getElementById('main-img').src=this.src">
+                                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Angle+2" class="cursor-pointer rounded-md border-2 border-transparent hover:border-brand-blue" onclick="document.getElementById('main-img').src=this.src">
+                                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Angle+3" class="cursor-pointer rounded-md border-2 border-transparent hover:border-brand-blue" onclick="document.getElementById('main-img').src=this.src">
+                                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Video" class="cursor-pointer rounded-md border-2 border-transparent hover:border-brand-blue flex items-center justify-center bg-gray-200">
+                                    <svg class="w-8 h-8 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                                </img>
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                        <div>
+                            <h1 class="text-4xl font-serif font-bold text-brand-dark-blue mb-4">Natural Blue Sapphire</h1>
+                            <p class="text-2xl text-brand-blue font-semibold mb-6">Inquire for Price</p>
+                            
+                            <p class="mb-6 text-lg">An exquisite example of a natural sapphire, boasting exceptional color and clarity. Sourced directly from the mines of Sri Lanka, this gemstone is a perfect centerpiece for any high-end jewelry piece.</p>
+
+                            <div class="border-t border-b border-gray-200 py-4">
+                                <h3 class="text-xl font-bold text-brand-dark-blue mb-4">Details</h3>
+                                <ul class="space-y-2 text-md">
+                                    <li class="flex justify-between"><span class="font-semibold">SKU:</span><span>SS-01234</span></li>
+                                    <li class="flex justify-between"><span class="font-semibold">Weight:</span><span>3.15 Carats</span></li>
+                                    <li class="flex justify-between"><span class="font-semibold">Shape:</span><span>Oval</span></li>
+                                    <li class="flex justify-between"><span class="font-semibold">Dimensions:</span><span>9.1 x 7.2 x 5.4 mm</span></li>
+                                    <li class="flex justify-between"><span class="font-semibold">Origin:</span><span>Sri Lanka</span></li>
+                                    <li class="flex justify-between"><span class="font-semibold">Treatment:</span><span>Heated</span></li>
+                                </ul>
+                            </div>
+
+                            <button class="w-full mt-8 bg-brand-blue hover:bg-brand-dark-blue text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">
+                                Inquire About This Gem
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `,
+            about: `
+                <div class="container mx-auto px-6 py-16 text-center">
+                    <h1 class="text-4xl font-serif font-bold text-brand-dark-blue mb-4">Our Story</h1>
+                    <p class="max-w-3xl mx-auto text-lg">Founded in 2005, PreciousGems has been a trusted partner for jewelers worldwide. We are passionate about sourcing stones that are not only beautiful but also ethically and sustainably mined. Our expertise ensures that every gem we offer meets the highest standards of quality and integrity.</p>
+                </div>
+            `,
+            contact: `
+                 <div class="container mx-auto px-6 py-16">
+                    <h1 class="text-4xl font-serif font-bold text-brand-dark-blue mb-8 text-center">Get In Touch</h1>
+                    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                        <p class="text-center mb-6">Have a question or a specific request? Fill out the form below or contact us directly.</p>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-bold mb-2">Name</label>
+                                <input type="text" id="name" class="w-full p-2 border rounded-md">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-bold mb-2">Email</label>
+                                <input type="email" id="email" class="w-full p-2 border rounded-md">
+                            </div>
+                             <div class="mb-4">
+                                <label for="gem-sku" class="block text-sm font-bold mb-2">Gemstone of Interest (SKU, optional)</label>
+                                <input type="text" id="gem-sku" class="w-full p-2 border rounded-md">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-bold mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full p-2 border rounded-md"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-blue hover:bg-brand-dark-blue text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">Send Message</button>
+                        </form>
+                    </div>
+                 </div>
+            `
+        };
+
+        // --- Simple Page Router ---
+        const pageContent = document.getElementById('page-content');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function showPage(pageName, params = {}) {
+            // Simple templating for product detail page
+            if (pageName === 'productDetail') {
+                 // In a real app, you'd fetch data based on params.id
+                pageContent.innerHTML = pages.productDetail; 
+            } else {
+                pageContent.innerHTML = pages[pageName];
+            }
+            
+            // Update active link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${pageName}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Close mobile menu on navigation
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show home page by default
+            showPage('home');
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+
+    </script>
+</body>
+</html>
