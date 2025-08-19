@@ -1,0 +1,11 @@
+{
+  "name": "gemstone-catalogue",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev:api": "pnpm --filter @app/api dev",
+    "build:api": "pnpm --filter @app/api build",
+    "start:api": "pnpm --filter @app/api start",
+    "seed:admin": "pnpm --filter @app/api seed:admin"
+  }
+}

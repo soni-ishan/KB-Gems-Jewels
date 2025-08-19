@@ -1,0 +1,40 @@
+# Node / workspace
+node_modules/
+**/node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# Logs & debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env (keep examples tracked)
+.env
+.env.*        # any .env.local, .env.production, etc.
+!.env.example
+!**/.env.example
+
+# Temp / local artifacts
+.tmp/
+temp/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Test helpers / scratch files
+cookies.txt
+body.json
+
+# Editor / OS (optional—uncomment if you don’t want to track editor config)
+#.vscode/
+#.idea/
+
+# Upload/output buckets (add later if you create them)
+# uploads/
+# storage/
