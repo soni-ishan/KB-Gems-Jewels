@@ -30,6 +30,11 @@ Thumbs.db
 # Test helpers / scratch files
 cookies.txt
 body.json
+stone.json
+item.json
+lot.json
+commands.md
+week1day2commands.md
 
 # Editor / OS (optional—uncomment if you don’t want to track editor config)
 #.vscode/
